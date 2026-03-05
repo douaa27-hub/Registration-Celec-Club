@@ -1,0 +1,34 @@
+*CELEC Club Registration System*
+
+A web application that lets students register to join the CELEC Club at USTHB.
+Built using Node.js, Express, and MongoDB.
+
+*STRUCTURE*
+
+registration
+        registration-backend    
+  app.js
+  package.json
+  .env
+  config/database.js
+  models/userModel.js
+  middlewares/validation.js
+  controllers/controller.js
+  routes/userRoutes.js
+
+        registration-frontend
+
+ style.css
+ script.js
+ logo.png
+
+
+
+## How to Run It
+
+cd registration-backend
+node app.js 
+
+
+
+## created by douaa <3

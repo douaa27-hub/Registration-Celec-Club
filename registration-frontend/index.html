@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CELEC Registrations</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="CELEC Logo" />
+    <h1>CELEC Registrations</h1>
+    <div class="header-spacer"></div>
+  </header>
+
+  <main>
+    <div class="card">
+
+      <h2>Registration Form</h2>
+
+      <form id="registrationForm">
+
+        <!-- PERSONAL INFO -->
+        <p class="section-title">Personal Information</p>
+
+        <div class="form-group">
+          <label>Full Name <span>*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="" />
+          <div class="error-msg" id="err-fullName">Full name is required (min 3 characters).</div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>Date of Birth <span>*</span></label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" />
+            <div class="error-msg" id="err-dateOfBirth">Please enter a valid date. Age must be 16–35.</div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number <span>*</span></label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="06****** / +2136********" />
+            <div class="error-msg" id="err-phoneNumber">Enter a valid Algerian number (06****** / +2136*******).</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address <span>*</span></label>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com" />
+          <div class="error-msg" id="err-email">Please enter a valid email.</div>
+        </div>
+
+        <div class="form-group">
+          <label>Are you a current CELEC member?</label>
+          <div class="toggle-row">
+            <span>Current member</span>
+            <label class="toggle">
+              <input type="checkbox" id="isMember" name="isMember" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ACADEMIC INFO -->
+        <p class="section-title">Academic Information</p>
+
+        <div class="form-group">
+          <label>Are you a USTHB student?</label>
+          <div class="toggle-row">
+            <span>Currently enrolled at USTHB</span>
+            <label class="toggle">
+              <input type="checkbox" id="isUsthbStudent" name="isUsthbStudent" onchange="toggleStudentId()" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" id="studentIdGroup" style="display: none;">
+          <label>Student ID <span>*</span></label>
+          <input type="text" id="studentId" name="studentId" placeholder="e.g. CS20201234" />
+          <div class="error-msg" id="err-studentId">Student ID is required for USTHB students.</div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>Study Level</label>
+            <select id="studyLevel" name="studyLevel">
+              <option value="">Choose</option>
+              <option>L1</option>
+              <option>L2</option>
+              <option>L3</option>
+              <option>M1</option>
+              <option>M2</option>
+              <option>Engineer</option>
+              <option>PhD</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Feild of study</label>
+            <select id="feild of study" name="Feild of study">
+              <option value="">Choose</option>
+              <option>Computer Science</option>
+              <option>Electronics</option>
+              <option>Civil Engineering</option>
+              <option>Mechanical Engineering</option>
+              <option>Mathematics</option>
+              <option>Physics</option>
+              <option>Science and technologie</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>department-what department you want to join? </label>
+          <select id="department" name="department">
+            <option value="">Choose</option>
+            <option>IT</option>
+            <option>Design</option>
+            <option>Communication</option>
+            <option>Tech</option>
+          </select>
+        </div>
+
+        <!-- PROFILE -->
+        <p class="section-title">Profile</p>
+
+        <div class="form-group">
+          <label>Skills</label>
+          <input type="text" id="skills" name="skills" placeholder="JavaScript, Python, C" />
+        </div>
+
+        <div class="form-group">
+          <label>Areas of Interest</label>
+          <input type="text" id="areasOfInterest" name="areasOfInterest" placeholder="e.g. Web Dev, AI, Cybersecurity" />
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>LinkedIn</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username" />
+          </div>
+          <div class="form-group">
+            <label>GitHub</label>
+            <input type="url" id="github" name="github" placeholder="https://github.com/username" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Motivation <span>*</span></label>
+          <textarea id="motivation" name="motivation" placeholder="Tell us why you want to join CELEC..." maxlength="100"></textarea>
+        </div>
+
+        <!-- DOCUMENTS -->
+        <p class="section-title">Documents</p>
+
+        <div class="form-group">
+          <label>School Certificate (optional)</label>
+          <div class="file-upload">
+            <input type="file" id="schoolCert" name="schoolCert" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this, 'schoolCertName')" />
+            <p><strong>Click to upload</strong> — PDF, JPG, PNG</p>
+            <p class="file-name" id="schoolCertName"></p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>CV / Résumé (optional)</label>
+          <div class="file-upload">
+            <input type="file" id="cv" name="cv" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this, 'cvName')" />
+            <p><strong>Click to upload</strong> — PDF, JPG, PNG</p>
+            <p class="file-name" id="cvName"></p>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <button type="button" class="submit-btn" id="submitBtn" onclick="submitForm()">
+          Submit Application
+        </button>
+
+      </form>
+
+      <!-- Success message shown after submit -->
+      <div class="success-box" id="successBox">
+        <h3>✓ Application Submitted!</h3>
+        <p>Thank you for applying to CELEC Club.<br>We will review your application and contact you soon.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
